@@ -20,7 +20,9 @@ function postEquation(){
         url:'/calculator',
         data: equationToPost
     }).then(function(response){
-        console.log('in calculator');
+        //if successful update the DOM
+        console.log('in calculator', response);
+        getEquation();
     }).catch(function(err){
         console.log('ruh roh shaggy');
     })//end try-then-catch
@@ -33,9 +35,9 @@ function getEquation(){
     $.ajax({ 
         method:'GET',
         url:'/calculator',
+
     }).then(function(response){
-        console.log('in get');
-            //crete html to display sum that returned from server
+        console.log('back from server with total of:', response); 
 
     }).catch(function(err){
         console.log('wha wha');
@@ -47,5 +49,3 @@ function getEquation(){
 
 
 
-    // let el= $(`#outputDiv`);
-    // el.append(<p>${num1}, ${operator}, ${num2} = ${sum}</p>);

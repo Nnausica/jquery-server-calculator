@@ -6,10 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Server Side Calculator</title>
     <script src="vendors/jquery-3.6.0.min.js"></script>
-    <source src="scripts/client.js" type="">
+    <script src="scripts/client.js"></script>
     <link rel="stylesheet" href= "style/style.css">
 </head>
 <body>
     <p>Server Side Calculator</p>
+
+    <div id="inputDiv">
+        <input type="number" id="firstNumIn" placeholder="number">
+        <select id="operation">
+            <option value="add">+</option>
+            <option value="subtract">-</option>
+            <option value="multiply">x</option>
+            <option value="divide">/</option>
+          </select>
+        <input type="number" id="secondNumIn" placeholder="number">
+        <button id="equals">=</button>
+    </div>
+    <div id=outputDiv></div>
 </body>
 </html>

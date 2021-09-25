@@ -21,38 +21,37 @@
 //routes
 
     app.get('/calculator', (req, res)=>{
-        console.log('get route hit');
-        res.send ( doTheMath(equation) ) //send this back to client JS- right now its sending the array... :(
+        console.log('in app get');
+        res.send(doTheMath().toString()) //send this back to client JS- right now its sending the array... :(
     })
-
-    function doTheMath(){
-        for (let i=0; i< equation.length; i++){
-            if(equation[i].operator === '+' ){
-                total+= Number(equation[i].num1) + Number(equation[i].num2)
-                console.log('sum total:', total);
-            }
-            else if(equation[i].operator === '-'){
-                total-= Number(equation[i].num1) - Number(equation[i].num2)
-                console.log('sub total:', total);
-            }
-            else if(equation[i].operator === '*'){
-                total *= Number(equation[i].num1) * Number(equation[i].num2)
-                console.log('multiply total:', total);
-            }
-            else if(equation[i].operator === '/'){
-                total /= Number(equation[i].num1) / Number(equation[i].num2)
-                console.log('divide total:', total);
-            }
-            }//end else if
-        } 
 
     app.post( '/calculator', ( req, res )=>{
         console.log( '/ POST got to server OK:', req.body );//recieving post from client
         equation.push( req.body );
-        res.send(doTheMath(equation))
+        res.send('post from server to client JS')
     })
 
     //add data together
 
-
-
+    function doTheMath(){
+        console.log('in do the math');
+        let total=0
+        for (let i=0; i< equation.length; i++){
+            if(equation[i].operator === 'add' ){
+                total+= Number(equation[i].num1) + Number(equation[i].num2)
+                return total;
+            }
+            else if(equation[i].operator === 'subtract'){
+                total-= Number(equation[i].num1) - Number(equation[i].num2)
+                return total;
+            }
+            else if(equation[i].operator === 'multiply'){
+                total *= Number(equation[i].num1) * Number(equation[i].num2)
+                 return total;
+            }
+            else if(equation[i].operator === 'divide'){
+                total /= Number(equation[i].num1) / Number(equation[i].num2)
+                return total;
+            }
+            }//end else if
+        } 

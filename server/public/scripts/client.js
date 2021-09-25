@@ -1,11 +1,22 @@
-console.log('handshake');
-
 $(document).ready(onReady);
 
 function onReady(){
     $(`#equals`).on(`click`, postEquation);
 
 }//end onReady
+
+function getEquation(){
+    console.log(`in get function:`);
+    $.ajax({ 
+        method:'GET',
+        url:'/calculator',
+    }).then(function(response){
+        console.log('back from server with total of:', response); 
+    }).catch(function(err){
+        console.log('wha wha');
+    })//end try-then-catch
+}//end getEquation
+
 
 function postEquation(){
     let equationToPost = {
@@ -21,31 +32,13 @@ function postEquation(){
         data: equationToPost
     }).then(function(response){
         //if successful update the DOM
-        console.log('in calculator', response);
+        console.log('in array posted to server:', response);
         getEquation();
     }).catch(function(err){
         console.log('ruh roh shaggy');
     })//end try-then-catch
 
 }//end postEquation
-
-function getEquation(){
-    console.log(`in get function:`);
-
-    $.ajax({ 
-        method:'GET',
-        url:'/calculator',
-
-    }).then(function(response){
-        console.log('back from server with total of:', response); 
-
-    }).catch(function(err){
-        console.log('wha wha');
-    })//end try-then-catch
-
-}//end getEquation
-
-
 
 
 

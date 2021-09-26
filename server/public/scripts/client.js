@@ -24,9 +24,10 @@ function getEquation(){
                 num2: response[i].num2,
                 sum: response[i].length-1, 
             }
-            console.log('this stupid code isnt reachign here is it', objToDisplay)
+            console.log('this stupid code is reaching here as many times as it loops....', objToDisplay)
         }
         let el= $(`#outputDiv`)
+        el.empty()
         el.append(`<li>${objToDisplay.num1}${objToDisplay.operator}${objToDisplay.num2} = ${objToDisplay.sum}</li>`)
 
     }).catch(function(err){

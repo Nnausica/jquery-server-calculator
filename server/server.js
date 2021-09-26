@@ -31,6 +31,7 @@
     app.post( '/calculator', ( req, res )=>{
         console.log( '/ POST got to server OK:', req.body );//recieving post from client
         equation.push( req.body );
+        console.log('am i adding a bunch here?', equation)//this is ok.... not a million
         res.send('post from server to client JS')
     })
 
@@ -42,7 +43,7 @@
         for (let i=0; i< equation.length; i++){
             if(equation[i].operator === 'add' ){
                 total= (Number(equation[i].num1) + Number(equation[i].num2))//total;
-                returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )//push to array to return
+                returnArray.push({num1:equation[i].num1, operator:equation[i].operator, num2:equation[i].num2, total:total})//push to array to return
             }//end sum
 
             else if(equation[i].operator === 'subtract'){
@@ -60,7 +61,6 @@
                 returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )
             }//end divide   
             }// end for loop
-
-            // returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )
-            console.log('return array looks like:', returnArray)
+            
+            console.log('return array looks like:', returnArray);//this is the problem, never empties out......
         } 

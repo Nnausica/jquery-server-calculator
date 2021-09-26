@@ -12,6 +12,7 @@
 //globals
     const port = 5000;
     let equation = []
+    let total=0
 
 //spin up server
     app.listen( port, ()=>{
@@ -22,7 +23,8 @@
 
     app.get('/calculator', (req, res)=>{
         console.log('in app get');
-        res.send(doTheMath().toString()) //send this back to client JS- right now its sending the array... :(
+        doTheMath();
+        res.send(total.toString()) //apparently if you use send it has to be a string otherwise it thins its an error code.
     })
 
     app.post( '/calculator', ( req, res )=>{
@@ -35,23 +37,27 @@
 
     function doTheMath(){
         console.log('in do the math');
-        let total=0
+    
         for (let i=0; i< equation.length; i++){
             if(equation[i].operator === 'add' ){
-                total+= Number(equation[i].num1) + Number(equation[i].num2)
-                return total;
-            }
+                total= (Number(equation[i].num1) + Number(equation[i].num2))
+                // return total;
+            }//end sum
+
             else if(equation[i].operator === 'subtract'){
-                total-= Number(equation[i].num1) - Number(equation[i].num2)
-                return total;
-            }
+                total= (Number(equation[i].num1) - Number(equation[i].num2))
+                // return total;
+            }// end subtract
+
             else if(equation[i].operator === 'multiply'){
-                total *= Number(equation[i].num1) * Number(equation[i].num2)
-                 return total;
-            }
+                total= (Number(equation[i].num1) * Number(equation[i].num2))
+                // return total;
+            }// end multiply
+
             else if(equation[i].operator === 'divide'){
-                total /= Number(equation[i].num1) / Number(equation[i].num2)
-                return total;
-            }
+                total= (Number(equation[i].num1) / Number(equation[i].num2))
+                // return total;
+            }//end divide
             }//end else if
+            console.log("sum", total);
         } 

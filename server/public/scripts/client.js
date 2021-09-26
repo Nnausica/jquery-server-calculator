@@ -6,7 +6,8 @@ function onReady(){
 
 }//end onReady
 
-let objToDisplay={num1:"number", operator:"operator", num2:"number", sum:"somenumber"}
+
+let objToDisplay={num1:"number", operator:"sign", num2:"number", sum:"anouthernumber"}
 
 function getEquation(){
     console.log(`in get function:`);
@@ -15,16 +16,16 @@ function getEquation(){
         url:'/calculator',
     }).then(function(response){
         console.log('back from server with response of:', response);
-        
-       
-        for(let i=0; i<response; i++){
+
+        for(let i=0; i<response.length; i++){
             let objToDisplay={
                 num1: response[i].num1,
                 operator: response[i].operator,
                 num2: response[i].num2,
                 sum: response[i].length-1, 
             }
-        }//end loop
+            console.log('this stupid code isnt reachign here is it', objToDisplay)
+        }
         let el= $(`#outputDiv`)
         el.append(`<li>${objToDisplay.num1}${objToDisplay.operator}${objToDisplay.num2} = ${objToDisplay.sum}</li>`)
 
@@ -56,16 +57,14 @@ function postEquation(){
     })//end try-then-catch
 }//end postEquation
 
-// function showThis(response){
-//     console.log(response);
-//     let objToDisplay={
-//         num1: $(`#firstNumIn`).val(),
-//         operator: $(`#operation`).val(),
-//         num2: $(`#secondNumIn`).val(),
-//         sum: response, 
-//         }
 
-//     let el= $(`#outputDiv`)
-//     el.append(`<li>${objToDisplay.num1}${objToDisplay.operator}${objToDisplay.num2} = ${objToDisplay.sum}</li>`)
 
-// }
+// let objToDisplay={num1:"number", operator:"operator", num2:"number", sum:"somenumber"}
+
+//     for(let i=0; i<response.body; i++){
+//         let objToDisplay={
+//             num1: response[i].num1,
+//             operator: response[i].operator,
+//             num2: response[i].num2,
+//             sum: response[i].length-1, 
+//         }}

@@ -24,8 +24,8 @@
 
     app.get('/calculator', (req, res)=>{
         console.log('in app get');
-        // doTheMath();
-        res.send(doTheMath()) //apparently if you use send it has to be a string otherwise it thins its an error code.
+        doTheMath();
+        res.send(returnArray) //apparently if you use send it has to be a string otherwise it thins its an error code.
     })
 
     app.post( '/calculator', ( req, res )=>{
@@ -62,7 +62,5 @@
             }// end for loop
 
             // returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )
-
-            return returnArray;
+            console.log('return array looks like:', returnArray)
         } 
-

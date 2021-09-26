@@ -12,6 +12,7 @@
 //globals
     const port = 5000;
     let equation = []
+    let returnArray = []
     let total=0
 
 //spin up server
@@ -23,8 +24,8 @@
 
     app.get('/calculator', (req, res)=>{
         console.log('in app get');
-        doTheMath();
-        res.send(total.toString()) //apparently if you use send it has to be a string otherwise it thins its an error code.
+        // doTheMath();
+        res.send(doTheMath()) //apparently if you use send it has to be a string otherwise it thins its an error code.
     })
 
     app.post( '/calculator', ( req, res )=>{
@@ -40,24 +41,28 @@
     
         for (let i=0; i< equation.length; i++){
             if(equation[i].operator === 'add' ){
-                total= (Number(equation[i].num1) + Number(equation[i].num2))
-                // return total;
+                total= (Number(equation[i].num1) + Number(equation[i].num2))//total;
+                returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )//push to array to return
             }//end sum
 
             else if(equation[i].operator === 'subtract'){
                 total= (Number(equation[i].num1) - Number(equation[i].num2))
-                // return total;
+                returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )
             }// end subtract
 
             else if(equation[i].operator === 'multiply'){
                 total= (Number(equation[i].num1) * Number(equation[i].num2))
-                // return total;
+                returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )
             }// end multiply
 
             else if(equation[i].operator === 'divide'){
                 total= (Number(equation[i].num1) / Number(equation[i].num2))
-                // return total;
-            }//end divide
-            }//end else if
-            console.log("sum", total);
+                returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )
+            }//end divide   
+            }// end for loop
+
+            // returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )
+
+            return returnArray;
         } 
+

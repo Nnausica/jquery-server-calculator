@@ -6,6 +6,8 @@ function onReady(){
 
 }//end onReady
 
+let objToDisplay={num1:"number", operator:"operator", num2:"number", sum:"somenumber"}
+
 function getEquation(){
     console.log(`in get function:`);
     $.ajax({ 
@@ -14,15 +16,18 @@ function getEquation(){
     }).then(function(response){
         console.log('back from server with response of:', response);
         
-        let objToDisplay={
-            num1: $(`#firstNumIn`).val(),
-            operator: $(`#operation`).val(),
-            num2: $(`#secondNumIn`).val(),
-            sum: response, 
+       
+        for(let i=0; i<response; i++){
+            let objToDisplay={
+                num1: response[i].num1,
+                operator: response[i].operator,
+                num2: response[i].num2,
+                sum: response[i].length-1, 
             }
-    
+        }//end loop
         let el= $(`#outputDiv`)
         el.append(`<li>${objToDisplay.num1}${objToDisplay.operator}${objToDisplay.num2} = ${objToDisplay.sum}</li>`)
+
     }).catch(function(err){
         console.log('wha wha');
     })//end try-then-catch
@@ -34,7 +39,7 @@ function postEquation(){
         num1: $(`#firstNumIn`).val(),
         operator: $(`#operation`).val(),
         num2: $(`#secondNumIn`).val(),
-        sum: "total", 
+        sum: "sumsum"
     }
     console.log(`equation:`, equationToPost);
 

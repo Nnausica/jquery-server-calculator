@@ -41,22 +41,22 @@
         for (let i=0; i< equation.length; i++){
             if(equation[i].operator === 'add' ){
                 total= (Number(equation[i].num1) + Number(equation[i].num2))//total;
-                returnArray.push({num1:equation[i].num1, operator:equation[i].operator, num2:equation[i].num2, total:total})//push to array to return
+                returnArray.push({num1:equation[i].num1, operator:equation[i].operator, num2:equation[i].num2, sum:total})//push to array to return
             }//end sum
 
             else if(equation[i].operator === 'subtract'){
                 total= (Number(equation[i].num1) - Number(equation[i].num2))
-                returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )
+                returnArray.push({num1:equation[i].num1, operator:equation[i].operator, num2:equation[i].num2, sum:total})
             }// end subtract
 
             else if(equation[i].operator === 'multiply'){
                 total= (Number(equation[i].num1) * Number(equation[i].num2))
-                returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )
+                returnArray.push({num1:equation[i].num1, operator:equation[i].operator, num2:equation[i].num2, sum:total})
             }// end multiply
 
             else if(equation[i].operator === 'divide'){
                 total= (Number(equation[i].num1) / Number(equation[i].num2))
-                returnArray.push(equation[i].num1, equation[i].operator, equation[i].num2, total )
+                returnArray.push({num1:equation[i].num1, operator:equation[i].operator, num2:equation[i].num2, sum:total})
             }//end divide   
             }// end for loop
             

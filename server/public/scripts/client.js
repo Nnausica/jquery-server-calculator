@@ -16,7 +16,7 @@ function getEquation(){
         
         for(let i=0; i<response.length; i++){
         let el=$(`#outputDiv`)
-        el.empty()
+        // el.empty() this will only display most recent....
         el.append( `<li>${response[i].num1} ${response[i].operator} ${response[i].num2} = ${response[i].sum}</li>`)}
   
     }).catch(function(err){

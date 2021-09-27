@@ -24,6 +24,7 @@
 
     app.get('/calculator', (req, res)=>{
         console.log('in app get');
+        returnArray=[];
         doTheMath();
         res.send(returnArray) //apparently if you use send it has to be a string otherwise it thins its an error code.
     })
@@ -31,15 +32,12 @@
     app.post( '/calculator', ( req, res )=>{
         console.log( '/ POST got to server OK:', req.body );//recieving post from client
         equation.push( req.body );
-        console.log('am i adding a bunch here?', equation)//this is ok.... not a million
-        res.send('post from server to client JS')
+        res.send()
     })
 
     //add data together
 
     function doTheMath(){
-        console.log('in do the math');
-    
         for (let i=0; i< equation.length; i++){
             if(equation[i].operator === 'add' ){
                 total= (Number(equation[i].num1) + Number(equation[i].num2))//total;

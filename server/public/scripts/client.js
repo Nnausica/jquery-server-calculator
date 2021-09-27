@@ -17,18 +17,18 @@ function getEquation(){
     }).then(function(response){
         console.log('back from server with response of:', response);
 
-        for(let i=0; i<response.length; i++){
-            let objToDisplay={
-                num1: response[i].num1,
-                operator: response[i].operator,
-                num2: response[i].num2,
-                sum: response[i].length-1, 
-            }
-            console.log('this stupid code is reaching here as many times as it loops....', objToDisplay)
-        }
-        let el= $(`#outputDiv`)
-        el.empty()
-        el.append(`<li>${objToDisplay.num1}${objToDisplay.operator}${objToDisplay.num2} = ${objToDisplay.sum}</li>`)
+        // for(let i=0; i<response.length; i++){
+        //     let objToDisplay={
+        //         num1: response[i].num1,
+        //         operator: response[i].operator,
+        //         num2: response[i].num2,
+        //         sum: response[i].length-1, 
+        //     }
+        //     console.log('this stupid code is reaching here as many times as it loops....', objToDisplay)
+        // }
+        // let el= $(`#outputDiv`)
+        // el.empty()
+        // el.append(`<li>${objToDisplay.num1}${objToDisplay.operator}${objToDisplay.num2} = ${objToDisplay.sum}</li>`)
 
     }).catch(function(err){
         console.log('wha wha');

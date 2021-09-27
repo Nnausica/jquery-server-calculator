@@ -13,10 +13,13 @@ function getEquation(){
         url:'/calculator',
     }).then(function(response){
         console.log('back from server with response of:', response);
-        
-        for(let i=0; i<response.length; i++){
         let el=$(`#outputDiv`)
-        // el.empty() this will only display most recent....
+        el.empty()//pull ou tthe loop to only do once....
+        for(let i=0; i<response.length; i++){
+            if(response[i].operator === 'add' ){response[i].operator= `+`}
+            else if (response[i].operator === 'subtract' ){response[i].operator= `-`}
+            else if (response[i].operator === 'multiply'){response[i].operator= `*`}
+            else if (response[i].operator === 'divide' ){response[i].operator= `/`}
         el.append( `<li>${response[i].num1} ${response[i].operator} ${response[i].num2} = ${response[i].sum}</li>`)}
   
     }).catch(function(err){
